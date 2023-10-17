@@ -12,6 +12,11 @@
         Background="Transparent"
         AllowsTransparency="True">
 
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static SystemCommands.CloseWindowCommand}" CanExecute="CommandBinding_CanExecute_1" Executed="CommandBinding_Executed_1" />
+        <CommandBinding Command="{x:Static SystemCommands.MinimizeWindowCommand}" CanExecute="CommandBinding_CanExecute_1" Executed="CommandBinding_Executed_3" />
+    </Window.CommandBindings>
+
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
@@ -27,6 +32,16 @@
                 <RowDefinition Height="75"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            
+            <Canvas Grid.Column="1">
+                <StackPanel Orientation="Horizontal" Canvas.Right="1">
+                    <Button Command="{x:Static SystemCommands.MinimizeWindowCommand}" 
+                            Content="_" Style="{StaticResource ControlButtonTheme}"/>
+                    <Button Command="{x:Static SystemCommands.CloseWindowCommand}" 
+                            Content="x" Style="{StaticResource ControlButtonTheme}"/>
+                    
+                </StackPanel>
+            </Canvas>
 
             <TextBlock Text="Elysian"
                        VerticalAlignment="Center"
